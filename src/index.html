@@ -6,7 +6,10 @@
 </head>
 <body>
   <div id="mod-list">
-    <input v-model="modInput" placeholder="Enter Mod Code">
+    <span>
+      <input v-model="modInput" placeholder="Enter Mod Code">
+      <button v-on:click="addMod">+</button>
+    </span>
     <ul>
       <li v-for="mod in mods">
         {{ mod.name }}
@@ -24,6 +27,13 @@
           { name: 'MA1101R'},
           { name: 'MA1102R'}
         ]
+      },
+      methods: {
+        addMod: function(){
+          if (this.modInput !== '') {
+            this.mods.push({name: this.modInput});
+          }
+        }
       }
     })
 
